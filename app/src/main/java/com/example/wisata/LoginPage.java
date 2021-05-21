@@ -13,10 +13,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.regex.Pattern;
 
 import model.ArrayUser;
 import model.User;
+
+import static model.ArrayUser.saveuserlist;
 
 public class LoginPage extends AppCompatActivity implements TextWatcher{
 
@@ -31,7 +44,7 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
         setContentView(R.layout.login_page);
 
         getSupportActionBar().hide();
-
+        loadDataDB();
         email_login = findViewById(R.id.email_login);
         password_login = findViewById(R.id.password_login);
         signin_login = findViewById(R.id.signin_login);
@@ -58,8 +71,8 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
 
                 if (validateEmail && validatePass) {
                     Boolean login = false;
-                    for (int i = 0; i < ArrayUser.saveuserlist.size(); i++) {
-                        User tempUser = ArrayUser.saveuserlist.get(i);
+                    for (int i = 0; i < saveuserlist.size(); i++) {
+                        User tempUser = saveuserlist.get(i);
                         if ((tempUser.getEmail_user().equalsIgnoreCase(email_user)) && tempUser.getPassword_user().equalsIgnoreCase(password_user)) {
                             Intent intent = new Intent(getBaseContext(), MainMenu.class);
                             intent.putExtra("IDuser", tempUser);
@@ -100,7 +113,6 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
                         email_login.setError("Wrong Email Format!");
                         validateEmail = false;
                     } else {
-                        email_login.setError("");
                         validateEmail = true;
                     }
                 }
@@ -134,7 +146,6 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
                         password_login.setError("Must contain a - z, A - Z, !, @, #, $");
                         validatePass = false;
                     } else {
-                        password_login.setError("");
                         validatePass = true;
                     }
 
@@ -167,4 +178,37 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
         public void afterTextChanged(Editable s) {
 
         }
+
+    private void loadDataDB(){
+        String url = "http://192.168.0.100/Tourdes_webservice/readalluser.php";
+        RequestQueue myQueue = Volley.newRequestQueue(this);
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray jsonUser = response.getJSONArray("user");
+                            for (int i =0; i < jsonUser.length(); i++){
+                                JSONObject objUser = jsonUser.getJSONObject(i);
+                                User userBaru = new User();
+                                userBaru.setEmail_user(objUser.getString("email"));
+                                userBaru.setPassword_user(objUser.getString("password"));
+                                saveuserlist.add(userBaru);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }
+        );
+
+        myQueue.add(request);
+    }
     }
