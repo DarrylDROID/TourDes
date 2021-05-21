@@ -6,36 +6,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.regex.Pattern;
-
 import model.ArrayUser;
 import model.User;
 
-import static model.ArrayUser.saveuserlist;
 
 public class RegisterPage extends AppCompatActivity implements TextWatcher {
 
     EditText email_register, password_register;
     Button signup_register;
     TextView signin_register;
-    boolean validateEmail, validatePass;
+    CheckBox checkBox_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +38,7 @@ public class RegisterPage extends AppCompatActivity implements TextWatcher {
         password_register = findViewById(R.id.password_register);
         signin_register = findViewById(R.id.signin_register);
         signup_register = findViewById(R.id.signup_register);
-        validateEmail = false;
-        validatePass = false;
+        checkBox_register = findViewById(R.id.checkBox_register);
 
         email_register.addTextChangedListener(this);
         password_register.addTextChangedListener(this);
@@ -79,94 +68,33 @@ public class RegisterPage extends AppCompatActivity implements TextWatcher {
                     password_register.setError("");
                 }
 
-                if (validateEmail && validatePass) {
-                    if (!email_user.isEmpty() && !password_user.isEmpty()) {
-                        Intent intent = new Intent(getBaseContext(), LoginPage.class);
-                        User user = new User(email_user, password_user);
-                        for (int i = 0; i < ArrayUser.saveuserlist.size(); i++) {
-                            if (user.getEmail_user().equalsIgnoreCase(ArrayUser.saveuserlist.get(i).getEmail_user())) {
-                                Toast.makeText(getBaseContext(), "Email is already Registered!", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
+                if (!email_user.isEmpty() && !password_user.isEmpty()) {
+                    Intent intent = new Intent(getBaseContext(), LoginPage.class);
+                    User user = new User(email_user, password_user);
+                    for (int i = 0; i < ArrayUser.saveuserlist.size(); i++) {
+                        if (user.getEmail_user().equalsIgnoreCase(ArrayUser.saveuserlist.get(i).getEmail_user())) {
+                            Toast.makeText(getBaseContext(), "Email is already Registered!", Toast.LENGTH_SHORT).show();
+                            return;
                         }
-                        intent.putExtra("IDuser", user);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                        createDataDB(email_user, password_user);
                     }
+                    intent.putExtra("IDuser", user);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    ArrayUser.saveuserlist.add(user);
                 }
-
-
             }
         });
-        email_register.addTextChangedListener(new TextWatcher() {
+
+        checkBox_register.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String email_user = email_register.getText().toString().trim();
-
-                Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile("[a-zA-Z0-9+._%-+]{1,256}" + "@"
-                        + "[a-zA-Z0-9][a-zA-Z0-9-]{0,64}" + "(" + "."
-                        + "[a-zA-Z0-9][a-zA-Z0-9-]{0,25}" + ")+");
-
-                if (email_user.isEmpty()) {
-                    email_register.setError("Please Fill the Email Column!");
-                    validateEmail = false;
+            public void onCheckedChanged (CompoundButton compoundButton,boolean isChecked){
+                if (isChecked) {
+                    password_register.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 } else {
-                    if (!EMAIL_ADDRESS_PATTERN.matcher(email_user).matches()) {
-                        email_register.setError("Wrong Email Format!");
-                        validateEmail = false;
-                    } else {
-                        validateEmail = true;
-                    }
+                    password_register.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
             }
         });
-        password_register.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String password_user = password_register.getText().toString().trim();
-
-                Pattern PASSWORD_PATTERN = Pattern.compile("[a-zA-Z0-9\\!\\@\\#\\$]{0,20}");
-
-                if (password_user.isEmpty()) {
-                    password_register.setError("Please Fill the Password Column!");
-                    validatePass = false;
-                } else {
-                    if (password_user.length() < 8 || password_user.length() > 20) {
-                        password_register.setError("Password must be 8 to 20 characters");
-                        validatePass = false;
-                    } else if (!PASSWORD_PATTERN.matcher(password_user).matches()) {
-                        password_register.setError("Must contain a - z, A - Z, !, @, #, $");
-                        validatePass = false;
-                    } else {
-                        validatePass = true;
-                    }
-
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-    });
-
-
-
     }
 
         @Override
@@ -190,37 +118,5 @@ public class RegisterPage extends AppCompatActivity implements TextWatcher {
         public void afterTextChanged(Editable s) {
 
         }
-    private void createDataDB(String email, String password){
-        String url = "http://192.168.0.100/Tourdes_webservice/createuser.php";
-        RequestQueue myQueue = Volley.newRequestQueue(this);
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray jsonUser = response.optJSONArray("user");
-
-                                JSONObject objUser = new JSONObject(String.valueOf(response));
-                                User userBaru = new User();
-                                userBaru.getEmail_user(objUser.));
-                                userBaru.getPassword_user(objUser.optString("password"));
-                                objUser.add(userBaru);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                }
-        );
-
-        myQueue.add(request);
-    }
     }
 

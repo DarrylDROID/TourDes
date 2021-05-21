@@ -7,8 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +30,6 @@ import org.json.JSONObject;
 
 import java.util.regex.Pattern;
 
-import model.ArrayUser;
 import model.User;
 
 import static model.ArrayUser.saveuserlist;
@@ -36,19 +39,22 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
     Button signin_login;
     EditText email_login, password_login;
     TextView create;
+    CheckBox checkBox_login;
     boolean validateEmail, validatePass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
+        loadDataDB();
 
         getSupportActionBar().hide();
-        loadDataDB();
+
         email_login = findViewById(R.id.email_login);
         password_login = findViewById(R.id.password_login);
         signin_login = findViewById(R.id.signin_login);
         create = findViewById(R.id.create);
+        checkBox_login = findViewById(R.id.checkBox_login);
         validateEmail = false;
         validatePass = false;
 
@@ -91,6 +97,8 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
                 }
             }
         });
+
+
         email_login.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -157,17 +165,30 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
 
             }
         });
+
+        checkBox_login.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    password_login.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    password_login.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
+
     }
+
         @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        public void beforeTextChanged (CharSequence s,int start, int count, int after){
 
         }
 
         @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        public void onTextChanged (CharSequence s,int start, int before, int count){
             String email_user = email_login.getText().toString().trim();
             String password_user = password_login.getText().toString().trim();
-            if(!email_user.isEmpty() && !password_user.isEmpty()){
+            if (!email_user.isEmpty() && !password_user.isEmpty()) {
                 signin_login.setEnabled(true);
             } else {
                 signin_login.setEnabled(false);
@@ -175,12 +196,12 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
         }
 
         @Override
-        public void afterTextChanged(Editable s) {
+        public void afterTextChanged (Editable s){
 
         }
 
-    private void loadDataDB(){
-        String url = "http://192.168.0.100/Tourdes_webservice/readalluser.php";
+    private void loadDataDB() {
+        String url = "http://192.168.1.4/Tourdes_webservice/readalluser.php";
         RequestQueue myQueue = Volley.newRequestQueue(this);
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -189,7 +210,7 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray jsonUser = response.getJSONArray("user");
-                            for (int i =0; i < jsonUser.length(); i++){
+                            for (int i = 0; i < jsonUser.length(); i++) {
                                 JSONObject objUser = jsonUser.getJSONObject(i);
                                 User userBaru = new User();
                                 userBaru.setEmail_user(objUser.getString("email"));
