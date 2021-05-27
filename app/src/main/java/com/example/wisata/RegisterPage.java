@@ -16,6 +16,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import model.ArrayUser;
 import model.User;
 
@@ -81,6 +92,7 @@ public class RegisterPage extends AppCompatActivity implements TextWatcher {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     ArrayUser.saveuserlist.add(user);
+                    postData(user);
                 }
             }
         });
@@ -95,6 +107,39 @@ public class RegisterPage extends AppCompatActivity implements TextWatcher {
                 }
             }
         });
+    }
+
+    private void postData(User temp) {
+        String url = "http://192.168.1.4/Tourdes_webservice/createuser.php";
+        RequestQueue myRequest = Volley.newRequestQueue(this);
+
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Intent intent = new Intent(getBaseContext(), LoginPage.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> data = new HashMap<>();
+                data.put("email", temp.getEmail_user());
+                data.put("password", String.valueOf(temp.getPassword_user()));
+
+                return data;
+            }
+        };
+
+        myRequest.add(request);
     }
 
         @Override
