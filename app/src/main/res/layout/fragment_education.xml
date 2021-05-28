@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainMenu">
+    tools:context=".EducationFragment">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:background="@drawable/bg"
-        android:weightSum="10"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        android:orientation="vertical"
+        android:weightSum="10">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,26 +23,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_gravity="center_horizontal"
-                android:background="#0F5878"
-                android:text="Tourism Destination "
+                android:background="#0A91CD"
+                android:text="Education Destination"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="34sp" />
+                android:textSize="34sp"
+                android:gravity="center_horizontal" />
 
         </RelativeLayout>
 
         <GridLayout
             android:id="@+id/mainGrid"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="8"
             android:alignmentMode="alignMargins"
             android:columnCount="2"
             android:columnOrderPreserved="false"
             android:padding="14dp"
             android:rowCount="3"
-            app:srcCompat="@drawable/bg">
+            app:srcCompat="@drawable/login">
 
             <!-- Row 1 -->
 
@@ -61,28 +61,26 @@
                 app:srcCompat="@drawable/login">
 
                 <LinearLayout
-                    android:layout_width="118dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="16dp"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/nature_des"
                         android:layout_width="match_parent"
-                        android:layout_height="135dp"
+                        android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/wisata" />
+                        android:src="@drawable/museum_angkut" />
 
                     <Button
-                        android:id="@+id/btn_nature"
+                        android:id="@+id/btn_museumangkut"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Nature"
-                        android:textColor="@color/white"
+                        android:text="Museum Angkut"
                         android:textSize="12sp"
+                        android:textColor="@color/white"
                         app:backgroundTint="#254965" />
-
 
                 </LinearLayout>
 
@@ -109,19 +107,18 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/education_des"
                         android:layout_width="match_parent"
-                        android:layout_height="135dp"
+                        android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/edukasi" />
+                        android:src="@drawable/kota_tua" />
 
                     <Button
-                        android:id="@+id/btn_education"
+                        android:id="@+id/btn_kotatua"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Education"
-                        android:textColor="@color/white"
+                        android:text="Kota Tua"
                         android:textSize="12sp"
+                        android:textColor="@color/white"
                         app:backgroundTint="#254965" />
 
                 </LinearLayout>
@@ -152,19 +149,18 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/religion_des"
                         android:layout_width="match_parent"
-                        android:layout_height="135dp"
+                        android:layout_height="127dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/religi" />
+                        android:src="@drawable/taman_pintar" />
 
                     <Button
-                        android:id="@+id/btn_religion"
+                        android:id="@+id/btn_tamanpintar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Religion"
-                        android:textColor="@color/white"
+                        android:text="Taman Pintar"
                         android:textSize="12sp"
+                        android:textColor="@color/white"
                         app:backgroundTint="#254965" />
 
                 </LinearLayout>
@@ -192,19 +188,18 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/culinary_des"
                         android:layout_width="match_parent"
-                        android:layout_height="135dp"
+                        android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/kuliner" />
+                        android:src="@drawable/kidzania" />
 
                     <Button
-                        android:id="@+id/btn_culinary"
+                        android:id="@+id/btn_kidzania"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Culinary"
-                        android:textColor="@color/white"
+                        android:text="Kidzania"
                         android:textSize="12sp"
+                        android:textColor="@color/white"
                         app:backgroundTint="#254965" />
 
                 </LinearLayout>
@@ -235,19 +230,18 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/about"
                         android:layout_width="match_parent"
-                        android:layout_height="135dp"
+                        android:layout_height="127dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/about" />
+                        android:src="@drawable/taman_mini" />
 
                     <Button
-                        android:id="@+id/btn_about"
+                        android:id="@+id/btn_tamanmini"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="About"
-                        android:textColor="@color/white"
+                        android:layout_height="55dp"
+                        android:text="Taman Mini"
                         android:textSize="12sp"
+                        android:textColor="@color/white"
                         app:backgroundTint="#254965" />
 
                 </LinearLayout>
@@ -275,17 +269,16 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/exit"
                         android:layout_width="match_parent"
-                        android:layout_height="135dp"
+                        android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/exit" />
+                        android:src="@drawable/jatim_park" />
 
                     <Button
-                        android:id="@+id/btn_exit"
+                        android:id="@+id/btn_jatimpark"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Exit"
+                        android:text="Jatim Park 2"
                         android:textColor="@color/white"
                         android:textSize="12sp"
                         app:backgroundTint="#254965" />

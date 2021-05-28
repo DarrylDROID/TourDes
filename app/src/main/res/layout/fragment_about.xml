@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".About">
+    tools:context=".AboutFragment">
 
 
     <TextView
@@ -76,14 +76,5 @@
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="BACK"
-        android:textColor="@color/white"
-        app:backgroundTint="#2A6C8A" />
 
 </LinearLayout>

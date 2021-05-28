@@ -80,7 +80,7 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
                     for (int i = 0; i < saveuserlist.size(); i++) {
                         User tempUser = saveuserlist.get(i);
                         if ((tempUser.getEmail_user().equalsIgnoreCase(email_user)) && tempUser.getPassword_user().equalsIgnoreCase(password_user)) {
-                            Intent intent = new Intent(getBaseContext(), MainMenu.class);
+                            Intent intent = new Intent(getBaseContext(), BotnavActivity.class);
                             intent.putExtra("IDuser", tempUser);
                             finish();
                             startActivity(intent);

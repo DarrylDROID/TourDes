@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NatureDestination">
+    tools:context=".NatureFragment">
 
     <LinearLayout
         android:orientation="vertical"
@@ -289,14 +289,6 @@
 
 
         </GridLayout>
-        <Button
-            android:id="@+id/back"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Back"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="#254965" />
 
     </LinearLayout>
 

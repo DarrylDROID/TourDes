@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import model.Destination;
+
+import static model.ArrayDestination.savedestinationlist;
+
 public class SplashScreen extends AppCompatActivity {
 
     private static int SplashScreen = 3000;

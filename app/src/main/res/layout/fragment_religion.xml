@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EducationDestination">
+    tools:context=".ReligionFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg"
         android:orientation="vertical"
-        android:weightSum="10">
+        android:background="@drawable/bg"
+        android:weightSum="10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <RelativeLayout
+            android:layout_weight="2"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2">
+            android:layout_height="0dp">
 
             <TextView
                 android:id="@+id/textGrid"
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:background="#0A91CD"
-                android:text="Education Destination"
+                android:text="Religion Destination"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="34sp"
@@ -71,13 +71,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/museum_angkut" />
+                        android:src="@drawable/masjid" />
 
                     <Button
-                        android:id="@+id/btn_museumangkut"
+                        android:id="@+id/btn_masjid"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Museum Angkut"
+                        android:text="Mosque"
                         android:textSize="12sp"
                         android:textColor="@color/white"
                         app:backgroundTint="#254965" />
@@ -110,13 +110,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/kota_tua" />
+                        android:src="@drawable/gereja" />
 
                     <Button
-                        android:id="@+id/btn_kotatua"
+                        android:id="@+id/btn_gereja"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Kota Tua"
+                        android:text="Church"
                         android:textSize="12sp"
                         android:textColor="@color/white"
                         app:backgroundTint="#254965" />
@@ -152,13 +152,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="127dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/taman_pintar" />
+                        android:src="@drawable/vihara" />
 
                     <Button
-                        android:id="@+id/btn_tamanpintar"
+                        android:id="@+id/btn_vihara"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Taman Pintar"
+                        android:text="Vihara"
                         android:textSize="12sp"
                         android:textColor="@color/white"
                         app:backgroundTint="#254965" />
@@ -191,13 +191,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/kidzania" />
+                        android:src="@drawable/klenteng" />
 
                     <Button
-                        android:id="@+id/btn_kidzania"
+                        android:id="@+id/btn_klenteng"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Kidzania"
+                        android:text="Pagoda"
                         android:textSize="12sp"
                         android:textColor="@color/white"
                         app:backgroundTint="#254965" />
@@ -233,13 +233,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="127dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/taman_mini" />
+                        android:src="@drawable/gua" />
 
                     <Button
-                        android:id="@+id/btn_tamanmini"
+                        android:id="@+id/btn_gua"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:text="Taman Mini"
+                        android:layout_height="match_parent"
+                        android:text="Cave"
                         android:textSize="12sp"
                         android:textColor="@color/white"
                         app:backgroundTint="#254965" />
@@ -272,31 +272,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/jatim_park" />
+                        android:src="@drawable/pura" />
 
                     <Button
-                        android:id="@+id/btn_jatimpark"
+                        android:id="@+id/btn_pura"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Jatim Park 2"
-                        android:textColor="@color/white"
+                        android:text="Temple"
                         android:textSize="12sp"
+                        android:textColor="@color/white"
                         app:backgroundTint="#254965" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
 
         </GridLayout>
-
-        <Button
-            android:id="@+id/back"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Back"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:backgroundTint="#254965" />
 
     </LinearLayout>
 

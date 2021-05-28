@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReligionDestination">
+    tools:context=".CulinaryFragment">
 
     <LinearLayout
         android:orientation="vertical"
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:background="#0A91CD"
-                android:text="Religion Destination"
+                android:text="Culinary Destination"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="34sp"
@@ -71,13 +71,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/masjid" />
+                        android:src="@drawable/durian_medan" />
 
                     <Button
-                        android:id="@+id/btn_masjid"
+                        android:id="@+id/btn_durianmedan"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Mosque"
+                        android:text="Durian Medan"
                         android:textSize="12sp"
                         android:textColor="@color/white"
                         app:backgroundTint="#254965" />
@@ -110,15 +110,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/gereja" />
+                        android:src="@drawable/sate_padang" />
 
                     <Button
-                        android:id="@+id/btn_gereja"
+                        android:id="@+id/btn_satepadang"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Church"
-                        android:textSize="12sp"
+                        android:text="Satay Padang"
                         android:textColor="@color/white"
+                        android:textSize="12sp"
                         app:backgroundTint="#254965" />
 
                 </LinearLayout>
@@ -152,13 +152,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="127dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/vihara" />
+                        android:src="@drawable/gudeg" />
 
                     <Button
-                        android:id="@+id/btn_vihara"
+                        android:id="@+id/btn_gudeg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Vihara"
+                        android:text="Gudeg"
                         android:textSize="12sp"
                         android:textColor="@color/white"
                         app:backgroundTint="#254965" />
@@ -191,15 +191,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/klenteng" />
+                        android:src="@drawable/rendang" />
 
                     <Button
-                        android:id="@+id/btn_klenteng"
+                        android:id="@+id/btn_rendang"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Pagoda"
-                        android:textSize="12sp"
+                        android:text="Rendang"
                         android:textColor="@color/white"
+                        android:textSize="12sp"
                         app:backgroundTint="#254965" />
 
                 </LinearLayout>
@@ -233,13 +233,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="127dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/gua" />
+                        android:src="@drawable/ayam_betutu" />
 
                     <Button
-                        android:id="@+id/btn_gua"
+                        android:id="@+id/btn_ayambetutu"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Cave"
+                        android:text="Chicken Betutu"
                         android:textSize="12sp"
                         android:textColor="@color/white"
                         app:backgroundTint="#254965" />
@@ -272,13 +272,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/pura" />
+                        android:src="@drawable/bebek_goreng" />
 
                     <Button
-                        android:id="@+id/btn_pura"
+                        android:id="@+id/btn_bebekgoreng"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Temple"
+                        android:text="Fried Duck"
                         android:textSize="12sp"
                         android:textColor="@color/white"
                         app:backgroundTint="#254965" />
@@ -289,14 +289,6 @@
 
 
         </GridLayout>
-        <Button
-            android:id="@+id/back"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Back"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="#254965" />
 
     </LinearLayout>
 
