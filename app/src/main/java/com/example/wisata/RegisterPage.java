@@ -183,7 +183,7 @@ public class RegisterPage extends AppCompatActivity implements TextWatcher {
     }
 
     private void postData(User temp) {
-        String url = "http://192.168.0.100/Tourdes_webservice/createuser.php";
+        String url = "http://192.168.1.4/Tourdes_webservice/createuser.php";
         RequestQueue myRequest = Volley.newRequestQueue(this);
 
         StringRequest request = new StringRequest(Request.Method.POST, url,

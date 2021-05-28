@@ -201,7 +201,7 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
         }
 
     private void loadDataDB() {
-        String url = "http://192.168.0.100/Tourdes_webservice/readalluser.php";
+        String url = "http://192.168.1.4/Tourdes_webservice/readalluser.php";
         RequestQueue myQueue = Volley.newRequestQueue(this);
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
