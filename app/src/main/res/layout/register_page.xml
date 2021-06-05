@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterPage"
-    android:background="@color/white">
+    android:background="@drawable/registerpagebg">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,12 +23,12 @@
 
             <ImageView
                 android:id="@+id/logo_user"
-                android:layout_width="163dp"
+                android:layout_width="wrap_content"
                 android:layout_height="199dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/login" />
+                app:srcCompat="@drawable/user" />
 
             <EditText
                 android:id="@+id/email_register"
@@ -44,7 +44,11 @@
                 android:inputType="textEmailAddress"
                 android:paddingStart="8dp"
                 android:paddingLeft="8dp"
-                android:textColor="@color/black"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="3"
+                android:shadowRadius="3"
+                android:textColor="@color/white"
                 android:textColorHint="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.571"
@@ -66,7 +70,11 @@
                 android:paddingStart="8dp"
                 android:paddingLeft="8dp"
                 android:password="true"
-                android:textColor="@color/black"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="3"
+                android:shadowRadius="3"
+                android:textColor="@color/white"
                 android:textColorHint="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +88,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="8dp"
                 android:text="Show Password"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password_register" />
 
@@ -90,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="144dp"
                 android:text="Already have account? Sign In"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
@@ -116,8 +124,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Register"
-                android:textColor="@color/black"
-                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:textSize="34sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/bgabout"
     android:orientation="vertical"
     tools:context=".AboutFragment">
 
@@ -14,12 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#205F7C"
+        android:gravity="center_horizontal"
         android:text="ABOUT US"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
-        android:textSize="12pt"
-        android:gravity="center_horizontal" />
+        android:textSize="12pt" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="David Christian "
-        android:textColor="#FF0000"
+        android:textColor="#171861"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|center_horizontal|center_vertical"
         android:text="Oey Darryl Valencio Wijaya"
-        android:textColor="#FF0000"
+        android:textColor="#171861"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="0706012010025"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
