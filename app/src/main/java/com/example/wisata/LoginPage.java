@@ -10,10 +10,13 @@ import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +43,12 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
     EditText email_login, password_login;
     TextView create;
     CheckBox checkBox_login;
+    ImageView logo_user;
+    TextView textView;
     boolean validateEmail, validatePass;
+    Animation top_animation, bottom_animation;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +58,23 @@ public class LoginPage extends AppCompatActivity implements TextWatcher{
 
         getSupportActionBar().hide();
 
+        logo_user = findViewById(R.id.logo_user);
+        textView = findViewById(R.id.textView);
         email_login = findViewById(R.id.email_login);
         password_login = findViewById(R.id.password_login);
         signin_login = findViewById(R.id.signin_login);
         create = findViewById(R.id.create);
         checkBox_login = findViewById(R.id.checkBox_login);
+        top_animation = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+        bottom_animation = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+        logo_user.setAnimation(top_animation);
+        textView.setAnimation(top_animation);
+        email_login.setAnimation(bottom_animation);
+        password_login.setAnimation(bottom_animation);
+        create.setAnimation(bottom_animation);
+        checkBox_login.setAnimation(bottom_animation);
+        signin_login.setAnimation(bottom_animation);
+
         validateEmail = false;
         validatePass = false;
 

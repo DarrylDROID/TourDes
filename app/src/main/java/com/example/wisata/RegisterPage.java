@@ -9,10 +9,13 @@ import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +41,10 @@ public class RegisterPage extends AppCompatActivity implements TextWatcher {
     Button signup_register;
     TextView signin_register;
     CheckBox checkBox_register;
+    ImageView logo_user;
+    TextView textView3;
     boolean validateEmail, validatePass;
+    Animation top_animation, bottom_animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +53,22 @@ public class RegisterPage extends AppCompatActivity implements TextWatcher {
 
         getSupportActionBar().hide();
 
+        logo_user = findViewById(R.id.logo_user);
+        textView3 = findViewById(R.id.textView3);
         email_register = findViewById(R.id.email_register);
         password_register = findViewById(R.id.password_register);
         signin_register = findViewById(R.id.signin_register);
         signup_register = findViewById(R.id.signup_register);
         checkBox_register = findViewById(R.id.checkBox_register);
+        top_animation = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+        bottom_animation = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+        logo_user.setAnimation(top_animation);
+        textView3.setAnimation(top_animation);
+        email_register.setAnimation(bottom_animation);
+        password_register.setAnimation(bottom_animation);
+        signup_register.setAnimation(bottom_animation);
+        signin_register.setAnimation(bottom_animation);
+        checkBox_register.setAnimation(bottom_animation);
         validateEmail = false;
         validatePass = false;
 
@@ -61,7 +78,8 @@ public class RegisterPage extends AppCompatActivity implements TextWatcher {
         signin_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(getBaseContext(), LoginPage.class);
+                startActivity(intent);
             }
         });
 
